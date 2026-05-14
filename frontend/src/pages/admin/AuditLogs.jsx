@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Navbar from '../../components/common/Navbar';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import { auditApi } from '../../services/api';
@@ -27,7 +27,7 @@ export default function AuditLogs() {
   const [page,    setPage]    = useState(0);
   const LIMIT = 50;
 
-  async function load(reset = false) {
+  const load = useCallback(async (reset = false) => {
     setLoading(true);
     try {
       const offset = reset ? 0 : page * LIMIT;
@@ -45,9 +45,9 @@ export default function AuditLogs() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [filters, page]);
 
-  useEffect(() => { load(true); }, [load]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { load(true); }, [load]);
 
   return (
     <>
