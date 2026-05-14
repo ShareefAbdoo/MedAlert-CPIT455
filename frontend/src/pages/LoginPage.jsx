@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { authApi } from '../services/api';
 import toast from 'react-hot-toast';
@@ -14,10 +14,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  if (profile) {
-    navigate(`/${profile.role}/dashboard`, { replace: true });
-    return null;
-  }
+  if (profile) return <Navigate to={`/${profile.role}/dashboard`} replace />;
 
   async function handleCredentials(e) {
     e.preventDefault();
