@@ -47,7 +47,7 @@ export default function AuditLogs() {
     }
   }
 
-  useEffect(() => { load(true); }, []);
+  useEffect(() => { load(true); }, [load]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

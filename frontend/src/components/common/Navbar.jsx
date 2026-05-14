@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -28,7 +28,6 @@ const ROLE_COLOR = {
 export default function Navbar() {
   const { profile, logout } = useAuth();
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
 
   async function handleLogout() {
     try {

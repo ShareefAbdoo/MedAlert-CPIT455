@@ -7,16 +7,6 @@ import { useAuth } from '../../contexts/AuthContext';
 import { format, isAfter, parseISO } from 'date-fns';
 import toast from 'react-hot-toast';
 
-function statusBadge(status) {
-  const map = {
-    pending:      { cls: 'badge-amber', label: 'Pending' },
-    administered: { cls: 'badge-green', label: 'Done' },
-    missed:       { cls: 'badge-red',   label: 'Missed' },
-    skipped:      { cls: 'badge-gray',  label: 'Skipped' },
-  };
-  const { cls, label } = map[status] || { cls: 'badge-gray', label: status };
-  return <span className={`badge ${cls}`}>{label}</span>;
-}
 
 export default function NurseDashboard() {
   const { profile } = useAuth();
